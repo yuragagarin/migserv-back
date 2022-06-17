@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "fa400b71-981d-4a1d-a8d7-e4defeca3f2f",
+		"name": "requestsmonitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8090",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "548c33a6-590e-4439-9998-5f2b53cf6fd9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Some test name', function () {",
+							"\tpm.response.to.have.status(200);",
+							"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+							"})"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8090",
+					"host": [
+						"localhost"
+					],
+					"port": "8090"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8090/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1994d509-0b05-42b9-8f65-32d1884073ad",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Some test name', function () {",
+							"\tpm.response.to.have.status(200);",
+							"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+							"})"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8090/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

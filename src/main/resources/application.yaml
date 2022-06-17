@@ -1,0 +1,167 @@
+migplus:
+  app:
+    version: 2.1.1.7
+    jwtSecret: migplusSecretKey
+    #jwtExpirationMs: 86400000
+
+spring:
+  profiles.active: demo
+---
+spring:
+  profiles: dev
+
+  datasource:
+    main:
+      platform: postgres
+      url: jdbc:postgresql://127.0.0.1:5432/migplus_test
+      username: postgres
+      password: postgres
+      driverClassName: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    baseline-on-migrate: false
+    enabled: true
+
+server:
+  port: 18340
+
+  #ssl:
+  #  enabled: true
+  #  key-alias: migplus
+  #  key-store-type: JKS
+  #  key-password: 123456
+  #  key-store: src/main/resources/migplus.jks
+  #  key-store-password: 123456
+  #  protocol: TLS
+  #  enabled-protocols: TLSv1.3
+
+logging:
+  config: classpath:log4j2-dev.yml
+---
+
+spring:
+  profiles: staging
+
+  datasource:
+    main:
+      platform: postgres
+      url: jdbc:postgresql://127.0.0.1:5432/migplus_test
+      username: postgres
+      password: postgres
+      driverClassName: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    baseline-on-migrate: false
+    enabled: true
+
+server:
+  port: 18340
+
+logging:
+  config: classpath:log4j2-dev.yml
+---
+
+spring:
+  profiles: sandbox
+
+  datasource:
+    main:
+      platform: postgres
+      url: jdbc:postgresql://127.0.0.1:5432/predict_test
+      username: postgres
+      password: postgres
+      driverClassName: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+server:
+  port: 8090
+  servlet:
+    context-path: /site
+---
+
+spring:
+  profiles: demo
+
+  datasource:
+    main:
+      platform: postgres
+      url: jdbc:postgresql://192.168.1.242:18334/predict_test
+      username: postgres
+      password: TcnmNjkmrjVbu753
+      driverClassName: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    baseline-on-migrate: false
+    enabled: true
+
+server:
+  port: 18335
+
+logging:
+  config: classpath:log4j2-prod.yml
+---
+
+spring:
+  profiles: prod
+
+  datasource:
+    main:
+      platform: postgres
+      url: jdbc:postgresql://192.168.1.242:18334/predict
+      username: postgres
+      password: TcnmNjkmrjVbu753
+      driverClassName: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    baseline-on-migrate: false
+    enabled: true
+
+server:
+  port: 18335
+
+logging:
+  config: classpath:log4j2-prod.yml

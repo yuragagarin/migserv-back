@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "fa400b71-981d-4a1d-a8d7-e4defeca3f2f",
+    "name": "requestsmonitor",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "localhost:8090/api",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "548c33a6-590e-4439-9998-5f2b53cf6fd9",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Some test name', function () {",
+              "\tpm.response.to.have.status(200);",
+              "\tpm.expect(pm.response.responseTime).to.be.below(400);",
+              "})"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8090",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1994d509-0b05-42b9-8f65-32d1884073ad",
+            "exec": [
+              "pm.test('Some test name', function () {",
+              "\tpm.response.to.have.status(200);",
+              "\tpm.expect(pm.response.responseTime).to.be.below(400);",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLQkNC00LzQuNC9IiwiaWF0IjoxNTk4ODU5ODQyLCJleHAiOjE1OTg5NDYyNDJ9.xfnnsUI9O908KzrjHbE6OkfO-m0pvHLJhArx3qWfi6Hc-nnT1Odu9zb2H6ibcozQLfVXXUacSGgrvoM4caQeAg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8090/api/test/user",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "api",
+            "test",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\":\"Сервисант\",\r\n    \"password\":\"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8090/api/auth/signin",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "api",
+            "auth",
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\":\"user2\",\r\n    \"email\":\"user2@all.ru\",\r\n    \"password\":\"user2\",\r\n    \"role\":[\"user\",\"admin\"]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8090/api/auth/signup",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "api",
+            "auth",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get public",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8090/api/test/all",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "api",
+            "test",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
